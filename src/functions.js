@@ -6,12 +6,22 @@ async function select(conn, id) {
     return resp.rows;
 }
 
-async function insert() {
+async function insert(conn, params) {
 
-    const sql = `INSERT INTO books(isbn, genre, author, name)
-                VALUES ($1, $2, $3, $4)`;
+    let colsStr = "";
+    let placeholders = [];
+    for(const key in params) {
+        colsStr += `${key},`;
+        placeholders.push(params[key]);
+    }
+    colsStr = colsStr.slice(0, -1);
 
-    const resp = await conn.query(sql, ['123123', 'adventure', 'nqkoi', 'HARRY POTTTER']);
+    const sql = `INSERT INTO books(${colsStr})
+                VALUES ($1, $2, $3, $4)
+                RETURNING *`;
+
+    const resp = await conn.query(sql, placeholders);
+    return resp.rows[0].id;
 }
 
 module.exports = {select, insert};

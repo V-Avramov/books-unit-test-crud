@@ -7,3 +7,5 @@ CREATE TABLE books (
         name text,
         author text
 );
+
+CREATE DATABASE books_db_test;

@@ -3,7 +3,8 @@ var config = {
     DB_HOST: "localhost",
     DB_DATABASE: "books_db",
     DB_PASSWORD: "Asd123123",
-    DB_PORT: 5432
+    DB_PORT: 5432,
+    DB_DATABASE_TEST: "books_db_test"
 };
 
 module.exports = config;
