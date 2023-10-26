@@ -85,3 +85,11 @@ test('test delete', async () => {
       ]
     );
   });
+
+test('test template', async () => {
+
+  const book = await util.select(connection, 1);
+
+  const template = util.getReplaceTemplate("The book is called $name$, written by $author$, isbn: $isbn$", book[0]);
+  
+});

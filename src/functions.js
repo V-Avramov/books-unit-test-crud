@@ -82,4 +82,12 @@ async function deleteBooks(conn, whereVals) {
     await conn.query(sql, placeholders);
 }
 
-module.exports = {select, insert, update, deleteBooks};
+function getReplaceTemplate(templateStr, templateData) {
+    for(const key in templateData) {
+        templateStr = templateStr.replaceAll(`$${key.toString()}$`, templateData[key]);
+        console.log("KEY", key, "DATA", templateData[key], "RESULT STR", templateStr);
+    }
+    return templateStr;
+}
+
+module.exports = {select, insert, update, deleteBooks, getReplaceTemplate};
