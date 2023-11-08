@@ -91,5 +91,8 @@ test('test template', async () => {
   const book = await util.select(connection, 1);
 
   const template = util.getReplaceTemplate("The book is called $name$, written by $author$, isbn: $isbn$", book[0]);
-  
+  const templateArr = template.split(' ');
+  for(const word of templateArr) {
+    expect(word[0] === '$' && word[word.length - 1] === '$').toBeFalsy();
+  }
 });
