@@ -1,3 +1,40 @@
+function queryPrepare(params) {
+    let query = {
+        placeholders: [],
+    };
+    let placeholderIndex = 1;
+    if ('insertCols' in params && Object.keys(params.insertCols).length !== 0) {
+
+        query.colsStr = "";
+        query.placeholderValues = "";
+        for(const key in params.insertCols) {
+            query.colsStr += `${key},`;
+            query.placeholders.push(params.insertCols[key]);
+            query.placeholderValues += `$${placeholderIndex++},`;
+        }
+        query.colsStr = query.colsStr.slice(0, -1);
+        query.placeholderValues = query.placeholderValues.slice(0, -1);
+    }
+    if ('setVals' in params && Object.keys(params.setVals).length !== 0) {
+        query.setStr = "";
+        for(const key in params.setVals) {
+            query.setStr += `${key} = $${placeholderIndex++},`;
+            query.placeholders.push(params.setVals[key]);
+        }
+        query.setStr = query.setStr.slice(0, -1);
+    }
+    if ('whereVals' in params && Object.keys(params.whereVals).length !== 0) {
+        query.whereStr = "";
+        for(const key in params.whereVals) {
+            query.whereStr += `${key} = $${placeholderIndex++} AND `;
+            query.placeholders.push(params.whereVals[key]);
+        }
+        query.whereStr = query.whereStr.slice(0, -5);
+    }
+
+    return query;
+}
+/*
 async function select(conn, id) {
     const sql = `SELECT * FROM books WHERE id = $1`;
 
@@ -5,10 +42,24 @@ async function select(conn, id) {
 
     return resp.rows;
 }
+*/
 
+function prepareSelect(selectVals, whereVals) {
+    const resultData = queryPrepare({whereVals: whereVals});
+    const sql = `
+    SELECT ${selectVals}
+    FROM books
+    WHERE ${resultData.whereStr}`;
+
+    //const resp = await conn.query(sql, [id]);
+
+    //return resp.rows;
+    return {query: sql, placeholders: resultData.placeholders};
+}
+/*
 async function insert(conn, params) {
 
-    let colsStr = "";
+    /*let colsStr = "";
     let placeholders = [];
     let placeholderIndex = 1;
     let placeholderValues = "";
@@ -18,68 +69,56 @@ async function insert(conn, params) {
         placeholderValues += `$${placeholderIndex++},`;
     }
     colsStr = colsStr.slice(0, -1);
-    placeholderValues = placeholderValues.slice(0, -1);
-
-    const sql = `INSERT INTO books(${colsStr})
-                VALUES (${placeholderValues})
+    placeholderValues = placeholderValues.slice(0, -1);*//*
+    const resultData = queryPrepare({insertCols: params});
+    const sql = `INSERT INTO books(${resultData.colsStr})
+                VALUES (${resultData.placeholderValues})
                 RETURNING *`;
 
-    const resp = await conn.query(sql, placeholders);
+    const resp = await conn.query(sql, resultData.placeholders);
     return resp.rows[0].id;
+}*/
+
+function prepareInsert(params) {
+    const resultData = queryPrepare({insertCols: params});
+    const sql = `
+    INSERT INTO books(${resultData.colsStr})
+    VALUES (${resultData.placeholderValues})
+    RETURNING *`;
+
+    return {query: sql, placeholders: resultData.placeholders};
 }
 
-async function update(conn, setVals, whereVals) {
+function prepareUpdate(setVals, whereVals) {
     if (Object.keys(setVals).length === 0 || Object.keys(whereVals).length === 0) {
         return;
     }
-    let placeholderIndex = 1;
-    let setStr = "";
-    let placeholders = [];
-    for(const key in setVals) {
-        setStr += `${key} = $${placeholderIndex++},`;
-        placeholders.push(setVals[key]);
-    }
-    setStr = setStr.slice(0, -1);
-    console.log(setStr);
-    console.log(placeholders);
-
-    let whereStr = "";
-    for(const key in whereVals) {
-        whereStr += `${key} = $${placeholderIndex++} AND `;
-        placeholders.push(whereVals[key]);
-    }
-    whereStr = whereStr.slice(0, -4);
-    console.log(whereStr);
-    console.log(placeholders);
+    const resultData = queryPrepare({setVals: setVals, whereVals: whereVals});
 
     const sql = `
-        UPDATE books
-        SET ${setStr}
-        WHERE ${whereStr}`;
+    UPDATE books
+    SET ${resultData.setStr}
+    WHERE ${resultData.whereStr}`;
 
-    await conn.query(sql, placeholders);
+    //await conn.query(sql, resultData.placeholders);
+
+    return {query: sql, placeholders: resultData.placeholders};
 }
 
-async function deleteBooks(conn, whereVals) {
+function prepareDeleteBooks(whereVals) {
     if (Object.keys(whereVals).length === 0) {
         return;
     }
 
-    let placeholderIndex = 1;
-    let placeholders = [];
-    let whereStr = "";
-    for(const key in whereVals) {
-        whereStr += `${key} = $${placeholderIndex++} AND `;
-        placeholders.push(whereVals[key]);
-    }
-    whereStr = whereStr.slice(0, -4);
+    const resultData = queryPrepare({whereVals: whereVals})
 
     const sql = `
-        DELETE
-        FROM books
-        WHERE ${whereStr}`;
+    DELETE
+    FROM books
+    WHERE ${resultData.whereStr}`;
     
-    await conn.query(sql, placeholders);
+    //await conn.query(sql, resultData.placeholders);
+    return {query: sql, placeholders: resultData.placeholders};
 }
 
 function getReplaceTemplate(templateStr, templateData) {
@@ -90,4 +129,4 @@ function getReplaceTemplate(templateStr, templateData) {
     return templateStr;
 }
 
-module.exports = {select, insert, update, deleteBooks, getReplaceTemplate};
+module.exports = {prepareSelect, prepareInsert, prepareUpdate, prepareDeleteBooks, getReplaceTemplate};
