@@ -1,5 +1,5 @@
 var config = require('./config');
-const { Pool } = require("pg");
+const { Pool, types } = require("pg");
 
 const credentials = {
 user: config.DB_USER,
@@ -11,6 +11,8 @@ port: config.DB_PORT,
 "connectionTimeoutMillis": 0,
 "idleTimeoutMillis": 0
 };
+
+types.setTypeParser(20, parseInt);
 
 const connection = new Pool(credentials)
 

@@ -4,7 +4,9 @@ var config = {
     DB_DATABASE: "books_db",
     DB_PASSWORD: "Asd123123",
     DB_PORT: 5432,
-    DB_DATABASE_TEST: "books_db_test"
+    DB_DATABASE_TEST: "books_db_test",
+
+    APP_ERROR: "Application error"
 };
 
 module.exports = config;

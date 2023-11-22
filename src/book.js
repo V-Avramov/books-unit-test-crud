@@ -35,52 +35,71 @@ class Book {
         this.author = author;
     }
 
-    createBook() {
+    async createBook(self) {
         const prepareResult = util.prepareInsert('books', {
             isbn: this.isbn,
             genre: this.genre,
             author: this.author,
             name: this.name
         });
-        console.log(prepareResult);
-
-        // TODO ADD DB this.id = queryResult[0].id
+        const inserted = await self.db.query(prepareResult.query, prepareResult.placeholders);
+        util.ASSERT(inserted.rowCount === 1, "Problem with createBook insert");
+        util.ASSERT(inserted.rows[0].id !== undefined && inserted.rows[0].id !== null);
+        this.id = inserted.rows[0].id;
+        
+        return inserted.rows[0];
     }
 
-    updateBook() {
-        if (this.id !== undefined || this.id !== null) {
-            const prepareResult = util.prepareUpdate('books', {
-                    isbn: this.isbn,
-                    genre: this.genre,
-                    author: this.author,
-                    name: this.name
-                }, 
+    async updateBook(self, newCols = null) {
+        if (this.id !== undefined && this.id !== null) {
+            let bookNewData = {
+                isbn: this.isbn,
+                genre: this.genre,
+                author: this.author,
+                name: this.name
+            };
+
+            if (newCols !== null) {
+                bookNewData = newCols;
+            }
+            const prepareResult = util.prepareUpdate('books', 
+                bookNewData, 
                 {
                     id: this.id
                 }
             )
-            console.log(prepareResult);
-            //TODO ADD DB
+            await self.db.query(prepareResult.query, prepareResult.placeholders);
         }
         else {
-            this.createBook();
+            await this.createBook(self);
         }
     }
 
-    deleteBook() {
-        if (this.id !== undefined || this.id !== null) {
-            return;
+    async deleteBook(self, where = null) {
+        let whereVals = {id: this.id};
+        if (where !== null) {
+            whereVals = where;
+        } else {
+            util.ASSERT(this.id !== undefined && this.id !== null, "The book does not exist in the database");
         }
-        const prepareResult = util.prepareDeleteBooks('books', {id: this.id})
-        console.log(prepareResult);
-        //TODO ADD DB
+        const prepareResult = util.prepareDeleteBooks('books', whereVals)
+        await self.db.query(prepareResult.query, prepareResult.placeholders);
     }
 
-    getAllBooks() {
-        const prepareResult = util.prepareSelect('books', '*', {});
-        console.log(prepareResult);
-        // TODO ADD DB
+    async getAllBooks(self) {
+        const prepareResult = util.prepareSelect('books', '*');
+        const result = await self.db.query(prepareResult.query, prepareResult.placeholders);
+        return result.rows;
     }
-}
 
-module.exports = {Book}
+    async getBookFromDB(self) {
+        util.ASSERT(this.id !== null, "This book is not in the database yet");
+
+        const prepareResult = util.prepareSelect('books', '*', { id: this.id })
+        const result = await self.db.query(prepareResult.query, prepareResult.placeholders);
+        
+        return result.rows[0];
+    }
+};
+
+module.exports = Book
