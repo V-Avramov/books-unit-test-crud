@@ -41,7 +41,7 @@ test('test select', async () => {
   });
 */
 test('test select', () => {
-  const result = util.prepareSelect('*', {id: 1, name: "Harry Potter"});
+  const result = util.prepareSelect('books', '*', {id: 1, name: "Harry Potter"});
   console.log("RES1", result);
   const equality = `
     SELECT *
@@ -52,7 +52,7 @@ test('test select', () => {
 })
 
 test('test insert', () => {
-  const result = util.prepareInsert({
+  const result = util.prepareInsert('books', {
       isbn: '123',
       genre: 'ooooo',
       author: 'nqkoi2',
@@ -95,7 +95,7 @@ test('test update', async () => {
 */
 
 test ('test update', () => {
-  const result = util.prepareUpdate({
+  const result = util.prepareUpdate('books', {
       genre: "adventure",
       author: "The Book Author",
       name: "Harry Potter and the Chamber of secrets"
@@ -111,12 +111,12 @@ test ('test update', () => {
 })
 
 test('fail update empty set', () => {
-  const result = util.prepareUpdate({}, {id: 1});
+  const result = util.prepareUpdate('books', {}, {id: 1});
   expect(result).toEqual(undefined);
 })
 
 test('fail update empty where', () => {
-  const result = util.prepareUpdate({name: "123123"}, {});
+  const result = util.prepareUpdate('books', {name: "123123"}, {});
   expect(result).toEqual(undefined);
 })
 /*
@@ -137,7 +137,7 @@ test('test delete', async () => {
     );
   });*/
 test('test delete', () => {
-  const result = util.prepareDeleteBooks({id: 1})
+  const result = util.prepareDeleteBooks('books', {id: 1})
   const equalityQuery = `
     DELETE
     FROM books
@@ -148,7 +148,7 @@ test('test delete', () => {
 });
 
 test('fail delete empty where', () => {
-  const result = util.prepareDeleteBooks({});
+  const result = util.prepareDeleteBooks('books', {});
   expect(result).toEqual(undefined);
 })
 

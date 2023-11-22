@@ -44,11 +44,11 @@ async function select(conn, id) {
 }
 */
 
-function prepareSelect(selectVals, whereVals) {
+function prepareSelect(table, selectVals, whereVals) {
     const resultData = queryPrepare({whereVals: whereVals});
     const sql = `
     SELECT ${selectVals}
-    FROM books
+    FROM ${table}
     WHERE ${resultData.whereStr}`;
 
     //const resp = await conn.query(sql, [id]);
@@ -79,24 +79,24 @@ async function insert(conn, params) {
     return resp.rows[0].id;
 }*/
 
-function prepareInsert(params) {
+function prepareInsert(table, params) {
     const resultData = queryPrepare({insertCols: params});
     const sql = `
-    INSERT INTO books(${resultData.colsStr})
+    INSERT INTO ${table}(${resultData.colsStr})
     VALUES (${resultData.placeholderValues})
     RETURNING *`;
 
     return {query: sql, placeholders: resultData.placeholders};
 }
 
-function prepareUpdate(setVals, whereVals) {
+function prepareUpdate(table, setVals, whereVals) {
     if (Object.keys(setVals).length === 0 || Object.keys(whereVals).length === 0) {
         return;
     }
     const resultData = queryPrepare({setVals: setVals, whereVals: whereVals});
 
     const sql = `
-    UPDATE books
+    UPDATE ${table}
     SET ${resultData.setStr}
     WHERE ${resultData.whereStr}`;
 
@@ -105,7 +105,7 @@ function prepareUpdate(setVals, whereVals) {
     return {query: sql, placeholders: resultData.placeholders};
 }
 
-function prepareDeleteBooks(whereVals) {
+function prepareDeleteBooks(table, whereVals) {
     if (Object.keys(whereVals).length === 0) {
         return;
     }
@@ -114,7 +114,7 @@ function prepareDeleteBooks(whereVals) {
 
     const sql = `
     DELETE
-    FROM books
+    FROM ${table}
     WHERE ${resultData.whereStr}`;
     
     //await conn.query(sql, resultData.placeholders);
