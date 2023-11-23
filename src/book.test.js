@@ -167,3 +167,12 @@ test('get all books from DB', async () => {
     const allBooks = await book.getAllBooks(self);
     expect(allBooks.length > 0).toBeTruthy();
 })
+
+test('get book as object', () => {
+    expect(book.getBookAsObject()).toEqual({
+        isbn: '123',
+        genre: 'adventure',
+        author: 'az',
+        name: 'johnny ludiq'
+      })
+});

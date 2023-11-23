@@ -5,14 +5,23 @@ function queryPrepare(params) {
         placeholders: [],
     };
     let placeholderIndex = 1;
-    if ('insertCols' in params && Object.keys(params.insertCols).length !== 0) {
+    if ('insertRows' in params && Object.keys(params.insertRows).length !== 0) {
 
         query.colsStr = "";
         query.placeholderValues = "";
-        for(const key in params.insertCols) {
-            query.colsStr += `${key},`;
-            query.placeholders.push(params.insertCols[key]);
-            query.placeholderValues += `$${placeholderIndex++},`;
+        let isGettingCols = true;
+        for(const cols of params.insertRows) {
+            query.placeholderValues += "(";
+            for (const key in cols) {
+                if (isGettingCols) {
+                    query.colsStr += `${key},`;
+                }
+                query.placeholders.push(cols[key]);
+                query.placeholderValues += `$${placeholderIndex++},`;
+            }
+            isGettingCols = false;
+            query.placeholderValues = query.placeholderValues.slice(0, -1);
+            query.placeholderValues += "),";
         }
         query.colsStr = query.colsStr.slice(0, -1);
         query.placeholderValues = query.placeholderValues.slice(0, -1);
@@ -48,10 +57,10 @@ function prepareSelect(table, selectVals, whereVals) {
 }
 
 function prepareInsert(table, params) {
-    const resultData = queryPrepare({insertCols: params});
+    const resultData = queryPrepare({insertRows: params});
     const sql = `
     INSERT INTO ${table}(${resultData.colsStr})
-    VALUES (${resultData.placeholderValues})
+    VALUES ${resultData.placeholderValues}
     RETURNING *`;
 
     return {query: sql, placeholders: resultData.placeholders};

@@ -13,18 +13,41 @@ test('test select', () => {
 });
 
 test('test insert', () => {
-  const result = util.prepareInsert('books', {
+  const result = util.prepareInsert('books', [{
       isbn: '123',
       genre: 'ooooo',
       author: 'nqkoi2',
       name: 'HARRY POTTTER2'
-  });
+  }]);
   const equalityQuery = `
     INSERT INTO books(isbn,genre,author,name)
     VALUES ($1,$2,$3,$4)
     RETURNING *`;
   expect(result.query).toEqual(equalityQuery);
   expect(result.placeholders).toEqual(['123', 'ooooo', 'nqkoi2', 'HARRY POTTTER2']);
+});
+
+test('test multiple insert', () => {
+  const result = util.prepareInsert('books', [
+    {
+      isbn: '123',
+      genre: 'ooooo',
+      author: 'nqkoi2',
+      name: 'HARRY POTTTER2'
+    },
+    {
+      isbn: '456',
+      genre: 'test genre',
+      author: 'az',
+      name: 'the book'
+    }
+  ]);
+  const equalityQuery = `
+    INSERT INTO books(isbn,genre,author,name)
+    VALUES ($1,$2,$3,$4),($5,$6,$7,$8)
+    RETURNING *`;
+  expect(result.query).toEqual(equalityQuery);
+  expect(result.placeholders).toEqual(['123', 'ooooo', 'nqkoi2', 'HARRY POTTTER2', '456', 'test genre', 'az', 'the book']);
 });
 
 test ('test update', () => {

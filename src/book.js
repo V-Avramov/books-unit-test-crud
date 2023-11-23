@@ -36,12 +36,12 @@ class Book {
     }
 
     async createBook(self) {
-        const prepareResult = util.prepareInsert('books', {
+        const prepareResult = util.prepareInsert('books', [{
             isbn: this.isbn,
             genre: this.genre,
             author: this.author,
             name: this.name
-        });
+        }]);
         const inserted = await self.db.query(prepareResult.query, prepareResult.placeholders);
         util.ASSERT(inserted.rowCount === 1, "Problem with createBook insert");
         util.ASSERT(inserted.rows[0].id !== undefined && inserted.rows[0].id !== null);
@@ -99,6 +99,15 @@ class Book {
         const result = await self.db.query(prepareResult.query, prepareResult.placeholders);
         
         return result.rows[0];
+    }
+
+    getBookAsObject() {
+        return {
+            isbn: this.isbn,
+            genre: this.genre,
+            name: this.name,
+            author: this.author
+        };
     }
 };
 
