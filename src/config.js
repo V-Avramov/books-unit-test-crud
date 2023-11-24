@@ -6,7 +6,8 @@ var config = {
     DB_PORT: 5432,
     DB_DATABASE_TEST: "books_db_test",
 
-    APP_ERROR: "Application error"
+    APP_ERROR: "Application error",
+    PORT: 9000
 };
 
 module.exports = config;
