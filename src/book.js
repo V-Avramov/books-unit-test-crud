@@ -2,7 +2,6 @@ const util = require('./functions');
 
 class Book {
     constructor(isbn, genre, name, author) {
-        this.id = null;
         this.isbn = isbn;
         this.genre = genre;
         this.name = name;
@@ -44,14 +43,13 @@ class Book {
         }]);
         const inserted = await self.db.query(prepareResult.query, prepareResult.placeholders);
         util.ASSERT(inserted.rowCount === 1, "Problem with createBook insert");
-        util.ASSERT(inserted.rows[0].id !== undefined && inserted.rows[0].id !== null);
-        this.id = inserted.rows[0].id;
         
         return inserted.rows[0];
     }
 
     async updateBook(self, newCols = null) {
-        if (this.id !== undefined && this.id !== null) {
+        const doesExist = await this.getBookFromDB(self);
+        if (doesExist) {
             let bookNewData = {
                 isbn: this.isbn,
                 genre: this.genre,
@@ -65,7 +63,7 @@ class Book {
             const prepareResult = util.prepareUpdate('books', 
                 bookNewData, 
                 {
-                    id: this.id
+                    isbn: this.isbn
                 }
             )
             await self.db.query(prepareResult.query, prepareResult.placeholders);
@@ -76,11 +74,9 @@ class Book {
     }
 
     async deleteBook(self, where = null) {
-        let whereVals = {id: this.id};
+        let whereVals = {isbn: this.isbn};
         if (where !== null) {
             whereVals = where;
-        } else {
-            util.ASSERT(this.id !== undefined && this.id !== null, "The book does not exist in the database");
         }
         const prepareResult = util.prepareDeleteBooks('books', whereVals)
         await self.db.query(prepareResult.query, prepareResult.placeholders);
@@ -93,9 +89,7 @@ class Book {
     }
 
     async getBookFromDB(self) {
-        util.ASSERT(this.id !== null, "This book is not in the database yet");
-
-        const prepareResult = util.prepareSelect('books', '*', { id: this.id })
+        const prepareResult = util.prepareSelect('books', '*', { isbn: this.isbn })
         const result = await self.db.query(prepareResult.query, prepareResult.placeholders);
         
         return result.rows[0];

@@ -10,8 +10,7 @@ beforeAll(async() => {
     self.db = connection;
     const sql = `
           CREATE TABLE IF NOT EXISTS books(
-              id BIGSERIAL PRIMARY KEY UNIQUE,
-              isbn text UNIQUE,
+              isbn text PRIMARY KEY UNIQUE,
               genre text,
               name text,
               author text
@@ -80,7 +79,6 @@ test('test create book', async () => {
     const result = await book.createBook(self);
     expect(result).toEqual(
         {
-          id: result.id, // IDK how to test this here
           isbn: '123',
           genre: 'adventure',
           author: 'az',
@@ -96,7 +94,6 @@ test('test update nonexistent book', async () => {
     const updatedBook = await book.getBookFromDB(self);
     expect(updatedBook).toEqual(
         {
-          id: updatedBook.id, // IDK how to test this here
           isbn: '1111',
           genre: 'adventure',
           author: 'az',
@@ -114,7 +111,6 @@ test('test update existing book', async () => {
     const updatedBook = await book.getBookFromDB(self);
     expect(updatedBook).toEqual(
         {
-          id: updatedBook.id, // IDK how to test this here
           isbn: '123123',
           genre: 'adventure',
           author: 'az',
@@ -131,7 +127,6 @@ test('test update existing book only one column', async () => {
     const updatedBook = await book.getBookFromDB(self);
     expect(updatedBook).toEqual(
         {
-          id: updatedBook.id, // IDK how to test this here
           isbn: '123asd',
           genre: 'adventure',
           author: 'AAA',
