@@ -1,7 +1,7 @@
 'use strict';
 
 const Book = require('./book');
-const connection = require("./test-database");
+const connection = require("../utilities/test-database");
 
 var self = {};
 var book;
@@ -20,7 +20,7 @@ beforeAll(async() => {
   });
   
 afterAll(async () => {
-    const sql = `DROP TABLE IF EXISTS books`;
+    const sql = `DROP TABLE IF EXISTS books CASCADE`;
   
     await self.db.query(sql);
     self.db.end();

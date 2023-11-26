@@ -1,4 +1,4 @@
-const util = require('./functions');
+const util = require('../utilities/functions');
 const Book = require('./book');
 
 class Library {

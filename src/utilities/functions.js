@@ -109,4 +109,24 @@ function ASSERT(condition, msg = config.APP_ERROR) {
     return;
 }
 
-module.exports = {prepareSelect, prepareInsert, prepareUpdate, prepareDeleteBooks, getReplaceTemplate, ASSERT};
+const asyncHandler = fn => (req, res, next) => {
+    return Promise
+        .resolve(fn(req, res, next))
+        .catch(e => {
+            handleError(res, req, e);
+        });
+};
+
+function handleError(res, req, err) {
+    if (err instanceof ClientException) {
+        if (err.tag === 'xhr') {
+            res.status(250);
+            res.send({data: err.message})
+            return;
+        }
+    }
+    res.send("Application error");
+}
+
+
+module.exports = {prepareSelect, prepareInsert, prepareUpdate, prepareDeleteBooks, getReplaceTemplate, ASSERT, asyncHandler};

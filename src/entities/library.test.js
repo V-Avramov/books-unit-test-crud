@@ -2,7 +2,7 @@
 
 const Book = require('./book');
 const Library = require('./library');
-const connection = require("./test-database");
+const connection = require("../utilities/test-database");
 
 var self = {};
 var library;

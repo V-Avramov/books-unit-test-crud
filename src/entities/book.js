@@ -1,4 +1,4 @@
-const util = require('./functions');
+const util = require('../utilities/functions');
 
 class Book {
     constructor(isbn, genre, name, author) {
