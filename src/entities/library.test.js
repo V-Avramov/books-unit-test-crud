@@ -84,6 +84,7 @@ test('add not a book to library', () => {
   }
 });
 
+// Below are integration tests
 test('prepareBooksForSave', () => {
   const book1 = new Book('1', 'g1', 'coolname', 'az');
   const book2 = new Book('2', 'g1', 'coolname', 'az');
@@ -105,7 +106,6 @@ test('prepareLibraryBookForSave fail', () => {
   expect(() => library.prepareLibraryBooksForSave()).toThrow("This library does not exist in the database yet");
 });
 
-// Below are integration tests
 test('save library', async () => {
   const savedLibrary = await library.saveLibrary(self);
   expect(savedLibrary).toEqual({
