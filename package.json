@@ -16,6 +16,10 @@
     "jest": "^29.7.0"
   },
   "jest": {
-    "collectCoverage": true
+    "collectCoverage": true,
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }

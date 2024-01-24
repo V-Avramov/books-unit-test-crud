@@ -9,7 +9,14 @@ async function createBook(req, res) {
 }
 
 function getBook(req, res) {
-    res.send({text:"BOOK"})
+    const book = new Book(req.body.isbn, '', '', '');
+    return book.getBookFromDB(req.self);
+}
+
+function deleteBook(req, res) {
+    const book = new Book(req.body.isbn, '', '', '');
+    book.deleteBook(req.self);
+    res.send({status: true})
 }
 
 module.exports = {createBook, getBook}
