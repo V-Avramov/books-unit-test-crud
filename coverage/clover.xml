@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1706130330622" clover="3.2.0">
+  <project timestamp="1706130330622" name="All files">
+    <metrics statements="179" coveredstatements="150" conditionals="44" coveredconditionals="32" methods="46" coveredmethods="32" elements="269" coveredelements="214" complexity="0" loc="179" ncloc="179" packages="4" files="8" classes="8"/>
+    <package name="src">
+      <metrics statements="21" coveredstatements="9" conditionals="8" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <file name="api.js" path="/home/v/Exercise/unit-test-hw/src/api.js">
+        <metrics statements="21" coveredstatements="9" conditionals="8" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.entities">
+      <metrics statements="70" coveredstatements="70" conditionals="8" coveredconditionals="8" methods="25" coveredmethods="25"/>
+      <file name="book.js" path="/home/v/Exercise/unit-test-hw/src/entities/book.js">
+        <metrics statements="38" coveredstatements="38" conditionals="8" coveredconditionals="8" methods="15" coveredmethods="15"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="5" count="28" type="stmt"/>
+        <line num="6" count="28" type="stmt"/>
+        <line num="7" count="28" type="stmt"/>
+        <line num="8" count="28" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="44" count="6" type="stmt"/>
+        <line num="45" count="6" type="stmt"/>
+        <line num="47" count="6" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="52" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="60" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="77" count="3" type="stmt"/>
+        <line num="78" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="81" count="3" type="stmt"/>
+        <line num="82" count="3" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="92" count="8" type="stmt"/>
+        <line num="93" count="8" type="stmt"/>
+        <line num="95" count="8" type="stmt"/>
+        <line num="99" count="9" type="stmt"/>
+        <line num="108" count="3" type="stmt"/>
+      </file>
+      <file name="library.js" path="/home/v/Exercise/unit-test-hw/src/entities/library.js">
+        <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="11" type="stmt"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="8" count="11" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="11" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="46" count="4" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="4" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.routing">
+      <metrics statements="11" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="book-route.js" path="/home/v/Exercise/unit-test-hw/src/routing/book-route.js">
+        <metrics statements="11" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.utilities">
+      <metrics statements="77" coveredstatements="69" conditionals="28" coveredconditionals="24" methods="11" coveredmethods="7"/>
+      <file name="config.js" path="/home/v/Exercise/unit-test-hw/src/utilities/config.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+      </file>
+      <file name="database.js" path="/home/v/Exercise/unit-test-hw/src/utilities/database.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="functions.js" path="/home/v/Exercise/unit-test-hw/src/utilities/functions.js">
+        <metrics statements="64" coveredstatements="56" conditionals="28" coveredconditionals="24" methods="11" coveredmethods="7"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="4" count="31" type="stmt"/>
+        <line num="7" count="31" type="stmt"/>
+        <line num="8" count="31" type="cond" truecount="4" falsecount="0"/>
+        <line num="10" count="14" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="12" count="14" type="stmt"/>
+        <line num="13" count="14" type="stmt"/>
+        <line num="14" count="17" type="stmt"/>
+        <line num="15" count="17" type="stmt"/>
+        <line num="16" count="52" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="42" type="stmt"/>
+        <line num="19" count="52" type="stmt"/>
+        <line num="20" count="52" type="stmt"/>
+        <line num="22" count="17" type="stmt"/>
+        <line num="23" count="17" type="stmt"/>
+        <line num="24" count="17" type="stmt"/>
+        <line num="26" count="14" type="stmt"/>
+        <line num="27" count="14" type="stmt"/>
+        <line num="29" count="31" type="cond" truecount="4" falsecount="0"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
+        <line num="33" count="8" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="37" count="31" type="cond" truecount="5" falsecount="0"/>
+        <line num="38" count="16" type="stmt"/>
+        <line num="39" count="16" type="stmt"/>
+        <line num="40" count="18" type="stmt"/>
+        <line num="41" count="18" type="stmt"/>
+        <line num="43" count="16" type="stmt"/>
+        <line num="46" count="31" type="stmt"/>
+        <line num="50" count="10" type="stmt"/>
+        <line num="51" count="10" type="stmt"/>
+        <line num="56" count="10" type="stmt"/>
+        <line num="60" count="14" type="stmt"/>
+        <line num="61" count="14" type="stmt"/>
+        <line num="66" count="14" type="stmt"/>
+        <line num="70" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="73" count="3" type="stmt"/>
+        <line num="75" count="3" type="stmt"/>
+        <line num="80" count="3" type="stmt"/>
+        <line num="84" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="88" count="4" type="stmt"/>
+        <line num="90" count="4" type="stmt"/>
+        <line num="95" count="4" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="100" count="3" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="106" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="107" count="5" type="stmt"/>
+        <line num="109" count="25" type="stmt"/>
+        <line num="112" count="4" type="stmt"/>
+        <line num="113" count="0" type="stmt"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="121" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="122" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="123" count="0" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="132" count="4" type="stmt"/>
+      </file>
+      <file name="test-database.js" path="/home/v/Exercise/unit-test-hw/src/utilities/test-database.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
