@@ -2,7 +2,9 @@
     "type": "object",
     "properties": {
       "isbn": {
-        "type": "string"
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 13
       },
       "genre": {
         "type": "string"
