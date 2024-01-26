@@ -19,4 +19,4 @@ function deleteBook(req, res) {
     res.send({status: true})
 }
 
-module.exports = {createBook, getBook}
+module.exports = {createBook, getBook, deleteBook}

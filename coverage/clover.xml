@@ -1,43 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1706130330622" clover="3.2.0">
-  <project timestamp="1706130330622" name="All files">
-    <metrics statements="179" coveredstatements="150" conditionals="44" coveredconditionals="32" methods="46" coveredmethods="32" elements="269" coveredelements="214" complexity="0" loc="179" ncloc="179" packages="4" files="8" classes="8"/>
-    <package name="src">
-      <metrics statements="21" coveredstatements="9" conditionals="8" coveredconditionals="0" methods="7" coveredmethods="0"/>
-      <file name="api.js" path="/home/v/Exercise/unit-test-hw/src/api.js">
-        <metrics statements="21" coveredstatements="9" conditionals="8" coveredconditionals="0" methods="7" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.entities">
-      <metrics statements="70" coveredstatements="70" conditionals="8" coveredconditionals="8" methods="25" coveredmethods="25"/>
-      <file name="book.js" path="/home/v/Exercise/unit-test-hw/src/entities/book.js">
-        <metrics statements="38" coveredstatements="38" conditionals="8" coveredconditionals="8" methods="15" coveredmethods="15"/>
+<coverage generated="1706273967101" clover="3.2.0">
+  <project timestamp="1706273967101" name="All files">
+    <metrics statements="143" coveredstatements="135" conditionals="36" coveredconditionals="32" methods="36" coveredmethods="32" elements="215" coveredelements="199" complexity="0" loc="143" ncloc="143" packages="2" files="5" classes="5"/>
+    <package name="entities">
+      <metrics statements="71" coveredstatements="71" conditionals="8" coveredconditionals="8" methods="25" coveredmethods="25"/>
+      <file name="book.js" path="/home/velin/Exercise/crud-unit-test-task/src/entities/book.js">
+        <metrics statements="39" coveredstatements="39" conditionals="8" coveredconditionals="8" methods="15" coveredmethods="15"/>
         <line num="1" count="3" type="stmt"/>
-        <line num="5" count="28" type="stmt"/>
-        <line num="6" count="28" type="stmt"/>
-        <line num="7" count="28" type="stmt"/>
-        <line num="8" count="28" type="stmt"/>
+        <line num="5" count="37" type="stmt"/>
+        <line num="6" count="37" type="stmt"/>
+        <line num="7" count="37" type="stmt"/>
+        <line num="8" count="37" type="stmt"/>
         <line num="12" count="11" type="stmt"/>
         <line num="15" count="6" type="stmt"/>
         <line num="18" count="4" type="stmt"/>
@@ -63,19 +36,20 @@
         <line num="79" count="1" type="stmt"/>
         <line num="81" count="3" type="stmt"/>
         <line num="82" count="3" type="stmt"/>
-        <line num="86" count="1" type="stmt"/>
+        <line num="83" count="3" type="stmt"/>
         <line num="87" count="1" type="stmt"/>
         <line num="88" count="1" type="stmt"/>
-        <line num="92" count="8" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
         <line num="93" count="8" type="stmt"/>
-        <line num="95" count="8" type="stmt"/>
-        <line num="99" count="9" type="stmt"/>
-        <line num="108" count="3" type="stmt"/>
+        <line num="94" count="8" type="stmt"/>
+        <line num="96" count="8" type="stmt"/>
+        <line num="100" count="9" type="stmt"/>
+        <line num="109" count="3" type="stmt"/>
       </file>
-      <file name="library.js" path="/home/v/Exercise/unit-test-hw/src/entities/library.js">
+      <file name="library.js" path="/home/velin/Exercise/crud-unit-test-task/src/entities/library.js">
         <metrics statements="32" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
         <line num="6" count="11" type="stmt"/>
         <line num="7" count="11" type="stmt"/>
         <line num="8" count="11" type="stmt"/>
@@ -105,42 +79,17 @@
         <line num="68" count="1" type="stmt"/>
         <line num="70" count="1" type="stmt"/>
         <line num="71" count="1" type="stmt"/>
-        <line num="75" count="1" type="stmt"/>
+        <line num="75" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="src.routing">
-      <metrics statements="11" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="book-route.js" path="/home/v/Exercise/unit-test-hw/src/routing/book-route.js">
-        <metrics statements="11" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.utilities">
-      <metrics statements="77" coveredstatements="69" conditionals="28" coveredconditionals="24" methods="11" coveredmethods="7"/>
-      <file name="config.js" path="/home/v/Exercise/unit-test-hw/src/utilities/config.js">
+    <package name="utilities">
+      <metrics statements="72" coveredstatements="64" conditionals="28" coveredconditionals="24" methods="11" coveredmethods="7"/>
+      <file name="config.js" path="/home/velin/Exercise/crud-unit-test-task/src/utilities/config.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
       </file>
-      <file name="database.js" path="/home/v/Exercise/unit-test-hw/src/utilities/database.js">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-      </file>
-      <file name="functions.js" path="/home/v/Exercise/unit-test-hw/src/utilities/functions.js">
+      <file name="functions.js" path="/home/velin/Exercise/crud-unit-test-task/src/utilities/functions.js">
         <metrics statements="64" coveredstatements="56" conditionals="28" coveredconditionals="24" methods="11" coveredmethods="7"/>
         <line num="1" count="4" type="stmt"/>
         <line num="4" count="31" type="stmt"/>
@@ -207,14 +156,14 @@
         <line num="128" count="0" type="stmt"/>
         <line num="132" count="4" type="stmt"/>
       </file>
-      <file name="test-database.js" path="/home/v/Exercise/unit-test-hw/src/utilities/test-database.js">
+      <file name="test-database.js" path="/home/velin/Exercise/crud-unit-test-task/src/utilities/test-database.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="19" count="3" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
       </file>
     </package>
   </project>
